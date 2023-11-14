@@ -12,11 +12,17 @@ public class Bullet : MonoBehaviour
 
     private float bulletLifeTime = 6f;
 
+    public int bulletCount = 0;
     void Start()
     {
         //StartCoroutine(FireCircle());
         // StartCoroutine(FireSpiral(5));
         StartCoroutine(FireFlower(5));
+    }
+
+    void Update()
+    {
+        Debug.Log("Bullet Count: " + bulletCount);
     }
 
     IEnumerator FireCircle()
@@ -57,6 +63,7 @@ public class Bullet : MonoBehaviour
 
     void CreateBullet(Vector2 direction)
     {
+        bulletCount++;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
 
@@ -71,6 +78,7 @@ public class Bullet : MonoBehaviour
         if (gameObject != null)
         {
             Destroy(gameObject);
+            bulletCount--;
         }
     }
 }
