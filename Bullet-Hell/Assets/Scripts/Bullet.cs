@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletCounter.bulletCount++;
-        // Destroy(gameObject, 7);
+        Destroy(gameObject, 7f);
     }
 
 
