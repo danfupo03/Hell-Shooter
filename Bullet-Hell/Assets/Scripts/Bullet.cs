@@ -1,91 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    public GameManager bulletCounter;
 
-    [SerializeField]
-    private float bulletSpeed;
+    void Awake()
+    {
+        bulletCounter = FindObjectOfType<GameManager>();
+    }
 
-    [SerializeField]
-    private TextMeshProUGUI bulletCountText;
-
-    private float bulletLifeTime = 6f;
-
-    private int bulletCount = 0;
+    // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(FireCircle());
-        // StartCoroutine(FireSpiral(5));
-        StartCoroutine(FireFlower(5));
+        bulletCounter.bulletCount++;
+        // Destroy(gameObject, 7);
     }
 
-    void Update()
+
+    void OnDestroy()
     {
-        if (bulletCountText != null)
-        {
-            bulletCountText.text = "" + bulletCount;
-        }
+        bulletCounter.bulletCount--;
     }
 
-    IEnumerator FireCircle()
+    // When the bullet becomes invisible for the camera, destroy it
+    void OnBecameInvisible()
     {
-
-        for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 360; j += 10)
-            {
-                CreateBullet(Quaternion.Euler(0, 0, j) * Vector2.up);
-            }
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
-
-    IEnumerator FireSpiral(int times)
-    {
-        for (int i = 0; i < (360 * times); i += 10)
-        {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector2.up);
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    IEnumerator FireFlower(int times)
-    {
-        for (int i = 0; i < (360 * times); i += 10)
-        {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector2.up);
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    void CreateBullet(Vector2 direction)
-    {
-        bulletCount++;
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-
-        rigidbody.velocity = bulletSpeed * direction;
-
-        StartCoroutine(DestroyBullet(bullet));
-    }
-
-    IEnumerator DestroyBullet(GameObject gameObject)
-    {
-        yield return new WaitForSeconds(bulletLifeTime);
-        if (gameObject != null)
-        {
-            Destroy(gameObject);
-            bulletCount--;
-        }
+        Destroy(gameObject);
     }
 }
