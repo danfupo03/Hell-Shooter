@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Bullet : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
 
+    [SerializeField]
+    private TextMeshProUGUI bulletCountText;
+
     private float bulletLifeTime = 6f;
 
-    public int bulletCount = 0;
+    private int bulletCount = 0;
     void Start()
     {
         //StartCoroutine(FireCircle());
@@ -22,7 +26,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Bullet Count: " + bulletCount);
+        if (bulletCountText != null)
+        {
+            bulletCountText.text = "" + bulletCount;
+        }
     }
 
     IEnumerator FireCircle()
