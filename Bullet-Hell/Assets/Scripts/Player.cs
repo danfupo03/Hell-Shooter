@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject bulletPrefab;
+
+    [SerializeField]
+    private float bulletSpeed;
+
     private float speed = 30;
     private float horizontalInput;
     private float forwardInput;
@@ -23,14 +29,32 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             speed = 5;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             speed = 30;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
+    }
+
+    void CreateBullet(Vector2 direction)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+
+        rigidbody.velocity = bulletSpeed * direction;
+    }
+
+    void Fire()
+    {
+        CreateBullet(Vector2.up);
     }
 }

@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 1220428364042260514}
   - component: {fileID: 1703852572188657196}
   - component: {fileID: -7826082317522204435}
-  - component: {fileID: 8669140310020131458}
   - component: {fileID: 5831034621240701043}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BossBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,19 +112,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8669140310020131458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142359734622157938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a27f19140c384c5d80ab190cc247a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletCounter: {fileID: 0}
 --- !u!114 &5831034621240701043
 MonoBehaviour:
   m_ObjectHideFlags: 0
