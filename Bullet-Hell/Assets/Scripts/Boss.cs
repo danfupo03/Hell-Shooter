@@ -10,7 +10,19 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
 
+    public BossLifeManager lifeManager;
+
     private float life = 100;
+
+    void Awake()
+    {
+        lifeManager = FindObjectOfType<BossLifeManager>();
+    }
+
+    void Start()
+    {
+        lifeManager.lifeCount = 100;
+    }
 
     void Update()
     {
@@ -128,6 +140,7 @@ public class Boss : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
             life -= 1;
+            lifeManager.lifeCount -= 1;
 
             Destroy(other.gameObject);
         }

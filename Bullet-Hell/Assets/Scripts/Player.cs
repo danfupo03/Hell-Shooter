@@ -13,16 +13,23 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform gunOffset;
 
+    public LifeManager lifeManager;
+
     private float speed = 30;
     private float horizontalInput;
     private float forwardInput;
 
     private float life = 10;
 
+    void Awake()
+    {
+        lifeManager = FindObjectOfType<LifeManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        lifeManager.lifeCount = 10;
     }
 
     // Update is called once per frame
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("BossBullet"))
         {
             life -= 1;
+            lifeManager.lifeCount -= 1;
 
             Destroy(other.gameObject);
         }
