@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InvokeRepeating("Fire", 0.5f, 0.1f);
     }
 
     // Update is called once per frame
@@ -40,11 +40,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Q))
         {
             speed = 30;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Fire();
         }
     }
 
