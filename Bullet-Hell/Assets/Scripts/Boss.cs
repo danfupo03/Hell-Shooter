@@ -10,9 +10,15 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
 
+    private float life = 100;
+
     void Update()
     {
-
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
+        Debug.Log(life);
     }
 
     public IEnumerator Appearance()
@@ -114,6 +120,16 @@ public class Boss : MonoBehaviour
                 default:
                     break;
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            life -= 1;
+
+            Destroy(other.gameObject);
         }
     }
 }

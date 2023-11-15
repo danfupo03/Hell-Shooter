@@ -31,13 +31,4 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == targetTag)
-        {
-            Destroy(collider.gameObject);
-            Destroy(gameObject);
-        }
-    }
 }

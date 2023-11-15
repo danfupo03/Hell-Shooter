@@ -17,10 +17,12 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
 
+    private float life = 10;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -46,6 +48,11 @@ public class Player : MonoBehaviour
         {
             Fire();
         }
+
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void CreateBullet(Vector3 direction)
@@ -59,5 +66,16 @@ public class Player : MonoBehaviour
     void Fire()
     {
         CreateBullet(Vector3.up);
+    }
+
+    // Handle collision with bullets
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BossBullet"))
+        {
+            life -= 1;
+
+            Destroy(other.gameObject);
+        }
     }
 }
