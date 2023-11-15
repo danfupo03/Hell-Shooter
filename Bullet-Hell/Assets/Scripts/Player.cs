@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
 
+    [SerializeField]
+    private Transform gunOffset;
+
     private float speed = 30;
     private float horizontalInput;
     private float forwardInput;
@@ -47,7 +50,7 @@ public class Player : MonoBehaviour
 
     void CreateBullet(Vector2 direction)
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, gunOffset.position, transform.rotation);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
 
         rigidbody.velocity = bulletSpeed * direction;
