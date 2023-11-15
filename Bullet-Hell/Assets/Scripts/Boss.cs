@@ -40,7 +40,7 @@ public class Boss : MonoBehaviour
         {
             for (int j = 0; j < 360; j += 10)
             {
-                CreateBullet(Quaternion.Euler(0, 0, j) * Vector2.up);
+                CreateBullet(Quaternion.Euler(0, 0, j) * Vector3.up);
             }
             yield return new WaitForSeconds(0.5f);
         }
@@ -50,10 +50,10 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 720; i += 10)
         {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector2.up);
+            CreateBullet(Quaternion.Euler(0, 0, i) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector3.up);
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -62,23 +62,23 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 720; i += 10)
         {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector2.up);
+            CreateBullet(Quaternion.Euler(0, 0, i) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector3.up);
 
-            CreateBullet(Quaternion.Euler(0, 0, -i) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 90) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 180) * Vector2.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 270) * Vector2.up);
+            CreateBullet(Quaternion.Euler(0, 0, -i) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, -i + 90) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, -i + 180) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, 0, -i + 270) * Vector3.up);
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    void CreateBullet(Vector2 direction)
+    void CreateBullet(Vector3 direction)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+        Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
 
         rigidbody.velocity = bulletSpeed * direction;
     }

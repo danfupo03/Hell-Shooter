@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skimmer
       objectReference: {fileID: 0}
+    - target: {fileID: 1258441714792974, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4150883914427684, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.6
@@ -392,6 +396,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1258441714792974, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1885847908}
+    - targetCorrespondingSourceObject: {fileID: 1258441714792974, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1885847909}
   m_SourcePrefab: {fileID: 100100000, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
 --- !u!1 &1112778094
 GameObject:
@@ -488,7 +495,7 @@ Transform:
   m_GameObject: {fileID: 1112778094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -347.3, y: 0, z: -39.2}
+  m_LocalPosition: {x: -347.3, y: 0, z: -41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -547,15 +554,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610716046848892563, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -335
+      value: -569
       objectReference: {fileID: 0}
     - target: {fileID: 3610716046848892563, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232
+      value: -319
       objectReference: {fileID: 0}
     - target: {fileID: 4038467188458375830, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4038467188458375830, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_margin.x
@@ -567,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4038467188458375830, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_fontSizeBase
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4283158782813913032, guid: 64e367e8813574f38afaa3a02c060993, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -769,7 +776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.90002, y: -161}
+  m_AnchoredPosition: {x: -612.9, y: -248}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417944820
@@ -832,8 +839,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1018,8 +1025,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1414767623416665133, guid: c276c1e43543248d5b4f37c143972893, type: 3}
-  bulletSpeed: 8
+  bulletSpeed: 30
   gunOffset: {fileID: 1158897891}
+--- !u!65 &1885847909
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885847906}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: -15}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

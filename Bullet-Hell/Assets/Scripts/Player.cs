@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Fire", 0.5f, 0.1f);
+        
     }
 
     // Update is called once per frame
@@ -41,18 +41,23 @@ public class Player : MonoBehaviour
         {
             speed = 30;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
     }
 
-    void CreateBullet(Vector2 direction)
+    void CreateBullet(Vector3 direction)
     {
         GameObject bullet = Instantiate(bulletPrefab, gunOffset.position, transform.rotation);
-        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+        Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
 
         rigidbody.velocity = bulletSpeed * direction;
     }
 
     void Fire()
     {
-        CreateBullet(Vector2.up);
+        CreateBullet(Vector3.up);
     }
 }

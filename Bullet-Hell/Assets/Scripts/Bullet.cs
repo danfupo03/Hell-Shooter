@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     public GameManager bulletCounter;
 
+    public string targetTag = "Enemy";
+
     void Awake()
     {
         bulletCounter = FindObjectOfType<GameManager>();
@@ -28,5 +30,14 @@ public class Bullet : MonoBehaviour
     void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == targetTag)
+        {
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
