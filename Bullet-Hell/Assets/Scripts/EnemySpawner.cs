@@ -22,24 +22,35 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+
     }
 
-    private IEnumerator SpawnEnemy()
+    private void SpawnBoss()
     {
-        WaitForSeconds wait = new WaitForSeconds(spawnRate);
+        Vector3 rotation = new Vector3(0, 180, 0);
+        Quaternion rotationQuaternion = Quaternion.Euler(rotation);
 
-        while (canSpawn)
+        GameObject enemy = enemyPrefab[0];
+        Instantiate(enemy, transform.position, rotationQuaternion);
+
+        enemyCounter.enemyCount++;
+    }
+
+    public void OnEnable()
+    {
+        TimeManager.OnMinuteChanged += TimeCheck;
+    }
+
+    public void OnDisable()
+    {
+        TimeManager.OnMinuteChanged -= TimeCheck;
+    }
+
+    private void TimeCheck()
+    {
+        if (TimeManager.Hour == 0 && TimeManager.Minute == 1)
         {
-            yield return wait;
-
-            int random = Random.Range(0, enemyPrefab.Length);
-
-            GameObject enemy = enemyPrefab[random];
-
-            Instantiate(enemy, transform.position, Quaternion.identity);
-
-            enemyCounter.enemyCount++;
+            SpawnBoss();
         }
     }
 }

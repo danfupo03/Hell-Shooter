@@ -24,7 +24,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        lifeManager.lifeCount = 100;
+        lifeManager.lifeCount = 10;
     }
 
     void Update()
@@ -37,6 +37,7 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
+        Vector3 setPos = new Vector3(-1013, 0, 40);
         Vector3 targetPos = new Vector3(-1013, 0, 12);
 
         Vector3 currentPos = transform.position;
@@ -113,25 +114,21 @@ public class Boss : MonoBehaviour
 
     private void TimeCheck()
     {
-        if (TimeManager.Hour == 0)
+        if (TimeManager.Hour == 0 && TimeManager.Minute == 2)
         {
-            switch (TimeManager.Minute)
-            {
-                case 2:
-                    StartCoroutine(Appearance());
-                    break;
-                case 10:
-                    StartCoroutine(FireCircle());
-                    break;
-                case 31:
-                    StartCoroutine(FireSpiral());
-                    break;
-                case 47:
-                    StartCoroutine(FireFlower());
-                    break;
-                default:
-                    break;
-            }
+            StartCoroutine(Appearance());
+        }
+        else if (TimeManager.Hour == 0 && TimeManager.Minute == 9)
+        {
+            StartCoroutine(FireCircle());
+        }
+        else if (TimeManager.Hour == 0 && TimeManager.Minute == 20)
+        {
+            StartCoroutine(FireSpiral());
+        }
+        else if (TimeManager.Hour == 0 && TimeManager.Minute == 30)
+        {
+            StartCoroutine(FireFlower());
         }
     }
 
