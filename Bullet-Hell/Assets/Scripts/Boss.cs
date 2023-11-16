@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField]
-    private float bulletSpeed;
+    [SerializeField] private float bulletSpeed;
 
     public BossLifeManager lifeManager;
 
@@ -37,7 +35,7 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
-        Vector3 targetPos = new Vector3(-1013, 0, 12);
+        Vector3 targetPos = new Vector3(6, 0, -7);
 
         Vector3 currentPos = transform.position;
 

@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform gunOffset;
 
+    public float minX = 10f;
+    public float maxX = -4f;
+
     public LifeManager lifeManager;
 
     private float speed = 20;
@@ -127,9 +130,11 @@ public class Player : MonoBehaviour
 
         Vector3 currentPosition = transform.position;
 
-        currentPosition.x += speed * Time.deltaTime;
+        float newPosition = currentPosition.x + speed * Time.deltaTime;
 
-        transform.position = currentPosition;
+        float clampedX = Mathf.Clamp(newPosition, minX, maxX);
+
+        transform.position = new Vector3(clampedX, currentPosition.y, currentPosition.z);
     }
 
     void MoveCharacterLeft()
@@ -138,9 +143,11 @@ public class Player : MonoBehaviour
 
         Vector3 currentPosition = transform.position;
 
-        currentPosition.x -= speed * Time.deltaTime;
+        float newPosition = currentPosition.x - speed * Time.deltaTime;
 
-        transform.position = currentPosition;
+        float clampedX = Mathf.Clamp(newPosition, minX, maxX);
+
+        transform.position = new Vector3(clampedX, currentPosition.y, currentPosition.z);
     }
 
     // Handle collision with bullets

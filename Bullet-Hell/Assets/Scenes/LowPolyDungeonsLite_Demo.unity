@@ -3959,9 +3959,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PolyArtWizardStandardMat
       objectReference: {fileID: 0}
+    - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.0442
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3969,7 +3973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.049786
+      value: 5.08
       objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9755,7 +9759,36 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1414767623416665133, guid: c276c1e43543248d5b4f37c143972893, type: 3}
   bulletSpeed: 30
   gunOffset: {fileID: 1863662056}
+  minX: -4
+  maxX: 16
   lifeManager: {fileID: 0}
+--- !u!54 &610489040
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610489033}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &610793440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23675,7 +23708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063552230360950, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7819586
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4063552230360950, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23683,7 +23716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063552230360950, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.83
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 4063552230360950, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23727,6 +23760,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 610489037}
+    - targetCorrespondingSourceObject: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 610489040}
   m_SourcePrefab: {fileID: 100100000, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
 --- !u!1001 &1547172357
 PrefabInstance:
@@ -27559,7 +27595,7 @@ Transform:
   m_GameObject: {fileID: 1863662055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.18, z: 1.29}
+  m_LocalPosition: {x: 0.9, y: 1.18, z: 1.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
