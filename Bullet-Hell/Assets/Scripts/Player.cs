@@ -19,12 +19,9 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
 
-    private float life = 10;
+    private Animator playerAnim;
 
-    public float minX = -1052f;
-    public float maxX = -965f;
-    public float minZ = -28f;
-    public float maxZ = -22f;
+    private float life = 10;
 
     void Awake()
     {
@@ -35,6 +32,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         lifeManager.lifeCount = 10;
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,12 +41,8 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
-        Vector3 newPosition = transform.position + (Vector3.forward * Time.deltaTime * speed * forwardInput) + (Vector3.right * Time.deltaTime * speed * horizontalInput);
-
-        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
-
-        transform.position = newPosition;
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -81,6 +75,8 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
+        playerAnim.Play("Attack01");
+
         Vector3 baseDirection = Vector3.forward;
 
         float angleBetweenBullets = 15f;
