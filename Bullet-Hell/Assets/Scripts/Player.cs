@@ -41,17 +41,17 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 5;
         }
 
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 30;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Fire();
         }
@@ -72,7 +72,17 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
-        CreateBullet(Vector3.up);
+        Vector3 baseDirection = Vector3.forward;
+
+        float angleBetweenBullets = 15f;
+
+        CreateBullet(baseDirection);
+
+        Vector3 leftDirection = Quaternion.Euler(0, -angleBetweenBullets, 0) * baseDirection;
+        CreateBullet(leftDirection);
+
+        Vector3 rightDirection = Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection;
+        CreateBullet(rightDirection);
     }
 
     // Handle collision with bullets

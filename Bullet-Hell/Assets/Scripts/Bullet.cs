@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 10f);
     }
 
-
     void OnDestroy()
     {
         bulletCounter.bulletCount--;

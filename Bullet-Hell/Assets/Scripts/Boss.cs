@@ -35,8 +35,7 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
-        transform.position = new Vector3(-347, 45, 20);
-        Vector3 targetPos = new Vector3(-347, 13, 20);
+        Vector3 targetPos = new Vector3(-1000, 0, 12);
 
         Vector3 currentPos = transform.position;
 
@@ -53,12 +52,11 @@ public class Boss : MonoBehaviour
 
     IEnumerator FireCircle()
     {
-
         for (int i = 0; i < 20; i++)
         {
             for (int j = 0; j < 360; j += 10)
             {
-                CreateBullet(Quaternion.Euler(0, 0, j) * Vector3.up);
+                CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
             }
             yield return new WaitForSeconds(0.5f);
         }
@@ -68,10 +66,10 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 720; i += 10)
         {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 270, 0) * Vector3.forward);
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -80,16 +78,16 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 720; i += 10)
         {
-            CreateBullet(Quaternion.Euler(0, 0, i) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 90) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 180) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, i + 270) * Vector3.up);
+            CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 270, 0) * Vector3.forward);
 
-            CreateBullet(Quaternion.Euler(0, 0, -i) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 90) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 180) * Vector3.up);
-            CreateBullet(Quaternion.Euler(0, 0, -i + 270) * Vector3.up);
-            yield return new WaitForSeconds(0.1f);
+            CreateBullet(Quaternion.Euler(0, -i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 270, 0) * Vector3.forward);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
@@ -126,7 +124,7 @@ public class Boss : MonoBehaviour
                 case 31:
                     StartCoroutine(FireSpiral());
                     break;
-                case 46:
+                case 47:
                     StartCoroutine(FireFlower());
                     break;
                 default:
