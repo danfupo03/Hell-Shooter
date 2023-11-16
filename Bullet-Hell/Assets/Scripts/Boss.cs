@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
-        Vector3 targetPos = new Vector3(-1000, 0, 12);
+        Vector3 targetPos = new Vector3(-1013, 0, 12);
 
         Vector3 currentPos = transform.position;
 

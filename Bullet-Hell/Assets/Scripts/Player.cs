@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
 
     private float life = 10;
 
+    public float minX = -1052f;
+    public float maxX = -965f;
+    public float minZ = -28f;
+    public float maxZ = -22f;
+
     void Awake()
     {
         lifeManager = FindObjectOfType<LifeManager>();
@@ -38,8 +43,12 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        Vector3 newPosition = transform.position + (Vector3.forward * Time.deltaTime * speed * forwardInput) + (Vector3.right * Time.deltaTime * speed * horizontalInput);
+
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+        newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
+
+        transform.position = newPosition;
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {

@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4764045452785172, guid: 7e9866d97eaa6f7438781a4ef86bcdc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1000
+      value: -1013
       objectReference: {fileID: 0}
     - target: {fileID: 4764045452785172, guid: 7e9866d97eaa6f7438781a4ef86bcdc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4800243336161868, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1000
+      value: -1013
       objectReference: {fileID: 0}
     - target: {fileID: 4800243336161868, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       propertyPath: m_LocalPosition.y
@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4800243336161868, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.6
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 4800243336161868, guid: 16da7ff10d66fac4aa63dc9c0340af17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1516,6 +1516,10 @@ MonoBehaviour:
   bulletSpeed: 30
   gunOffset: {fileID: 1158897891}
   lifeManager: {fileID: 0}
+  minX: -1052
+  maxX: -965
+  minZ: -22
+  maxZ: 28
 --- !u!65 &1885847909
 BoxCollider:
   m_ObjectHideFlags: 0
