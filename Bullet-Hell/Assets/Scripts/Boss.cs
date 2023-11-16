@@ -12,11 +12,14 @@ public class Boss : MonoBehaviour
 
     public BossLifeManager lifeManager;
 
-    private float life = 100;
+    public EnemyManager enemyCounter;
+
+    private float life = 10;
 
     void Awake()
     {
         lifeManager = FindObjectOfType<BossLifeManager>();
+        enemyCounter = FindObjectOfType<EnemyManager>();
     }
 
     void Start()
@@ -30,7 +33,6 @@ public class Boss : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(life);
     }
 
     public IEnumerator Appearance()
@@ -142,5 +144,10 @@ public class Boss : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        enemyCounter.enemyCount--;
     }
 }
