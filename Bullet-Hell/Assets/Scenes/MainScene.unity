@@ -281,6 +281,7 @@ MonoBehaviour:
   spawnRate: 20
   enemyPrefab:
   - {fileID: 5403915162366247602, guid: c0cce46e9ea854cfe9af632b9dc08742, type: 3}
+  - {fileID: 3573243385163481828, guid: 801e38575d1e7449abaa4be41d54312a, type: 3}
   canSpawn: 1
   enemyCounter: {fileID: 0}
 --- !u!4 &360301549
@@ -292,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 360301547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1006.1, y: 0.9156934, z: 82.5}
+  m_LocalPosition: {x: -1013, y: 0, z: 32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

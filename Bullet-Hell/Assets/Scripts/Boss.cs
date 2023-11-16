@@ -37,7 +37,6 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
-        Vector3 setPos = new Vector3(-1013, 0, 40);
         Vector3 targetPos = new Vector3(-1013, 0, 12);
 
         Vector3 currentPos = transform.position;
@@ -122,7 +121,7 @@ public class Boss : MonoBehaviour
         {
             StartCoroutine(FireCircle());
         }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 20)
+        else if (TimeManager.Hour == 0 && TimeManager.Minute == 40)
         {
             StartCoroutine(FireSpiral());
         }
