@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField]
-    private float bulletSpeed;
+    [SerializeField] private float bulletSpeed;
 
-    [SerializeField]
-    private Transform gunOffset;
+    [SerializeField] private Transform gunOffset;
 
     public LifeManager lifeManager;
 
-    private float speed = 30;
-    private float horizontalInput;
-    private float forwardInput;
+    private float speed = 20;
 
     private Animator playerAnim;
 
@@ -38,11 +33,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            MoveCharacterBackward();
+        }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            MoveCharacterForward();
+        }
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            MoveCharacterLeft();
+        }
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            MoveCharacterRight();
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -51,7 +60,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 30;
+            speed = 20;
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -75,7 +84,7 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
-        playerAnim.Play("Attack01");
+        playerAnim.Play("Attack02Maintain");
 
         Vector3 baseDirection = Vector3.forward;
 
@@ -88,6 +97,50 @@ public class Player : MonoBehaviour
 
         Vector3 rightDirection = Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection;
         CreateBullet(rightDirection);
+    }
+
+    void MoveCharacterBackward()
+    {
+        playerAnim.Play("BattleWalkBack");
+
+        Vector3 currentPosition = transform.position;
+
+        currentPosition.z -= speed * Time.deltaTime;
+
+        transform.position = currentPosition;
+    }
+
+    void MoveCharacterForward()
+    {
+        playerAnim.Play("BattleWalkForward");
+
+        Vector3 currentPosition = transform.position;
+
+        currentPosition.z += speed * Time.deltaTime;
+
+        transform.position = currentPosition;
+    }
+
+    void MoveCharacterRight()
+    {
+        playerAnim.Play("BattleWalkRight");
+
+        Vector3 currentPosition = transform.position;
+
+        currentPosition.x += speed * Time.deltaTime;
+
+        transform.position = currentPosition;
+    }
+
+    void MoveCharacterLeft()
+    {
+        playerAnim.Play("BattleWalkLeft");
+
+        Vector3 currentPosition = transform.position;
+
+        currentPosition.x -= speed * Time.deltaTime;
+
+        transform.position = currentPosition;
     }
 
     // Handle collision with bullets
