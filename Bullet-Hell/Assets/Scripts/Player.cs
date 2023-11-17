@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public float minX;
     public float maxX;
 
+    public float minZ;
+    public float maxZ;
+
     public LifeManager lifeManager;
 
     private float speed = 20;
@@ -108,9 +111,11 @@ public class Player : MonoBehaviour
 
         Vector3 currentPosition = transform.position;
 
-        currentPosition.z -= speed * Time.deltaTime;
+        float newPosition = currentPosition.z - speed * Time.deltaTime;
 
-        transform.position = currentPosition;
+        float clampedZ = Mathf.Clamp(newPosition, minZ, maxZ);
+
+        transform.position = new Vector3(currentPosition.x, currentPosition.y, clampedZ);
     }
 
     void MoveCharacterForward()
@@ -119,9 +124,11 @@ public class Player : MonoBehaviour
 
         Vector3 currentPosition = transform.position;
 
-        currentPosition.z += speed * Time.deltaTime;
+        float newPosition = currentPosition.z + speed * Time.deltaTime;
 
-        transform.position = currentPosition;
+        float clampedZ = Mathf.Clamp(newPosition, minZ, maxZ);
+
+        transform.position = new Vector3(currentPosition.x, currentPosition.y, clampedZ);
     }
 
     void MoveCharacterRight()
