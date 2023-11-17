@@ -45,6 +45,8 @@ public class Bomb : MonoBehaviour
             timeElapsed += Time.deltaTime;
             yield return null;
         }
+
+        anim.Play("Attack01");
     }
 
     void FireCircle()

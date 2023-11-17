@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
     private GameObject[] enemyPrefab;
 
     public EnemyManager enemyCounter;
+    Vector3 spawnpoint1;
+    Vector3 spawnpoint2;
 
     void Awake()
     {
@@ -21,7 +23,6 @@ public class EnemySpawner : MonoBehaviour
     {
 
     }
-
     private void SpawnBoss()
     {
         Vector3 rotation = new Vector3(0, 180, 0);
@@ -39,17 +40,6 @@ public class EnemySpawner : MonoBehaviour
         Quaternion rotationQuaternion = Quaternion.Euler(rotation);
 
         GameObject enemy = enemyPrefab[1];
-        Instantiate(enemy, transform.position, rotationQuaternion);
-
-        enemyCounter.enemyCount++;
-    }
-
-    private void SpawnChest()
-    {
-        Vector3 rotation = new Vector3(0, 180, 0);
-        Quaternion rotationQuaternion = Quaternion.Euler(rotation);
-
-        GameObject enemy = enemyPrefab[2];
         Instantiate(enemy, transform.position, rotationQuaternion);
 
         enemyCounter.enemyCount++;
@@ -88,9 +78,6 @@ public class EnemySpawner : MonoBehaviour
                     break;
                 case 21:
                     SpawnBomb();
-                    break;
-                case 25:
-                    SpawnChest();
                     break;
             }
         }

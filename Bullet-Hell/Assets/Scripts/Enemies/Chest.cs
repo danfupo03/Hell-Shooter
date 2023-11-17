@@ -12,6 +12,8 @@ public class Chest : MonoBehaviour
 
     public EnemyManager enemyCounter;
 
+    private float life = 5;
+
     Animator anim;
 
     void Awake()
@@ -24,37 +26,48 @@ public class Chest : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public IEnumerator Appearance()
+    void Update()
     {
-        anim.Play("Run");
-
-        transform.position = new Vector3(6, -5, -12);
-
-        float randomX = Random.Range(-4f, 16f);
-        float randomZ = Random.Range(-19f, -1f);
-        Vector3 targetPos = new Vector3(randomX, 0, randomZ);
-
-        Vector3 currentPos = transform.position;
-
-        float timeElapsed = 0;
-        float timeToMove = 1;
-
-        while (timeElapsed < timeToMove)
+        if (life <= 0)
         {
-            transform.position = Vector3.Lerp(currentPos, targetPos, timeElapsed / timeToMove);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            Destroy(gameObject);
         }
     }
 
-    void FireCircle()
+    private void WakeUp()
+    {
+        anim.Play("WakeUp");
+    }
+
+    private IEnumerator FireCircle()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            for (int j = 0; j < 360; j += 10)
+            {
+                CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private IEnumerator FireCones()
     {
         for (int j = 0; j < 360; j += 10)
         {
-            CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
-        }
+            Vector3 baseDirection = Vector3.forward;
 
-        Destroy(gameObject);
+            float angleBetweenBullets = 15f;
+
+            CreateBullet(baseDirection);
+
+            Vector3 leftDirection = Quaternion.Euler(0, -angleBetweenBullets, 0) * baseDirection;
+            CreateBullet(leftDirection);
+
+            Vector3 rightDirection = Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection;
+            CreateBullet(rightDirection);
+        }
+        yield return new WaitForSeconds(0.5f);
     }
 
     void CreateBullet(Vector3 direction)
@@ -81,43 +94,20 @@ public class Chest : MonoBehaviour
         {
             switch (TimeManager.Minute)
             {
-                case 2:
-                    StartCoroutine(Appearance());
-                    break;
-                case 4:
-                    FireCircle();
-                    break;
-                case 6:
-                    StartCoroutine(Appearance());
-                    break;
-                case 8:
-                    FireCircle();
-                    break;
-                case 10:
-                    StartCoroutine(Appearance());
-                    break;
-                case 12:
-                    FireCircle();
-                    break;
-                case 14:
-                    StartCoroutine(Appearance());
-                    break;
-                case 16:
-                    FireCircle();
-                    break;
-                case 18:
-                    StartCoroutine(Appearance());
-                    break;
-                case 20:
-                    FireCircle();
-                    break;
-                case 22:
-                    StartCoroutine(Appearance());
-                    break;
-                case 24:
-                    FireCircle();
+                case 25:
+                    WakeUp();
                     break;
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            life -= 1;
+
+            Destroy(other.gameObject);
         }
     }
 
