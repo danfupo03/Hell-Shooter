@@ -36,38 +36,42 @@ public class Chest : MonoBehaviour
 
     private void WakeUp()
     {
-        anim.Play("WakeUp");
+        anim.Play("IdleBattle");
     }
 
     private IEnumerator FireCircle()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
+            anim.Play("Attack02");
             for (int j = 0; j < 360; j += 10)
             {
                 CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
         }
     }
 
-    private IEnumerator FireCones()
+    private IEnumerator FireCones(int times)
     {
-        for (int j = 0; j < 360; j += 10)
+        for (int i = 0; i < times; i++)
         {
-            Vector3 baseDirection = Vector3.forward;
+            anim.Play("Attack01");
+
+            Quaternion characterRotation = transform.rotation;
+
+            Vector3 baseDirection = characterRotation * Vector3.forward;
 
             float angleBetweenBullets = 15f;
 
             CreateBullet(baseDirection);
+            CreateBullet(Quaternion.Euler(0, -angleBetweenBullets, 0) * baseDirection);
+            CreateBullet(Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection);
+            CreateBullet(Quaternion.Euler(0, -2 * angleBetweenBullets, 0) * baseDirection);
+            CreateBullet(Quaternion.Euler(0, 2 * angleBetweenBullets, 0) * baseDirection);
 
-            Vector3 leftDirection = Quaternion.Euler(0, -angleBetweenBullets, 0) * baseDirection;
-            CreateBullet(leftDirection);
-
-            Vector3 rightDirection = Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection;
-            CreateBullet(rightDirection);
+            yield return new WaitForSeconds(0.7f);
         }
-        yield return new WaitForSeconds(0.5f);
     }
 
     void CreateBullet(Vector3 direction)
@@ -97,6 +101,12 @@ public class Chest : MonoBehaviour
                 case 25:
                     WakeUp();
                     break;
+                case 26:
+                    StartCoroutine(FireCircle());
+                    break;
+                case 35:
+                    StartCoroutine(FireCones(5));
+                    break;
             }
         }
     }
@@ -105,6 +115,7 @@ public class Chest : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
+            anim.Play("GetHit");
             life -= 1;
 
             Destroy(other.gameObject);

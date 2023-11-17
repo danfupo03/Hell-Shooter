@@ -6,7 +6,7 @@ using TMPro;
 public class EnemyManager : MonoBehaviour
 {
     public TextMeshProUGUI enemyCountText;
-    public int enemyCount = 0;
+    public int enemyCount = 2;
 
     void Update()
     {
