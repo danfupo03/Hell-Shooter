@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform gunOffset;
 
-    public float minX = 10f;
-    public float maxX = -4f;
+    public float minX;
+    public float maxX;
 
     public LifeManager lifeManager;
 
