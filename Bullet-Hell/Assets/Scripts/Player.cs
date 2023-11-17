@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private Animator playerAnim;
 
-    private float life = 10;
+    private int life = 5;
 
     void Awake()
     {
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lifeManager.lifeCount = 10;
+        lifeManager.lifeCount = life;
         playerAnim = GetComponent<Animator>();
     }
 
@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BossBullet"))
         {
+            playerAnim.Play("GetHit");
             life -= 1;
             lifeManager.lifeCount -= 1;
 

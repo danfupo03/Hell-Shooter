@@ -79,6 +79,9 @@ public class EnemySpawner : MonoBehaviour
                 case 21:
                     SpawnBomb();
                     break;
+                case 40:
+                    SpawnBoss();
+                    break;
             }
         }
     }

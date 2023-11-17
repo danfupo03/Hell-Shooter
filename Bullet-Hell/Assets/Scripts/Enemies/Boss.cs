@@ -12,7 +12,7 @@ public class Boss : MonoBehaviour
 
     public EnemyManager enemyCounter;
 
-    private float life = 10;
+    private int life = 25;
 
     private Animator anim;
 
@@ -24,7 +24,8 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        lifeManager.lifeCount = 10;
+        lifeManager.lifeCount = life;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -37,7 +38,6 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
-        anim.Play("WalkForward");
 
         Vector3 targetPos = new Vector3(6, 0, -7);
 
@@ -48,6 +48,7 @@ public class Boss : MonoBehaviour
 
         while (timeElapsed < timeToMove)
         {
+            anim.Play("WalkForward");
             transform.position = Vector3.Lerp(currentPos, targetPos, timeElapsed / timeToMove);
             timeElapsed += Time.deltaTime;
             yield return null;
@@ -58,6 +59,7 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
+            anim.Play("Attack04");
             for (int j = 0; j < 360; j += 10)
             {
                 CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
@@ -68,8 +70,10 @@ public class Boss : MonoBehaviour
 
     IEnumerator FireSpiral()
     {
+        anim.Play("Attack03Start");
         for (int i = 0; i < 720; i += 10)
         {
+            anim.Play("Attack03Maintain");
             CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
@@ -80,8 +84,10 @@ public class Boss : MonoBehaviour
 
     IEnumerator FireFlower()
     {
+        anim.Play("Attack02Start");
         for (int i = 0; i < 720; i += 10)
         {
+            anim.Play("Attack02Maintain");
             CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
@@ -92,6 +98,19 @@ public class Boss : MonoBehaviour
             CreateBullet(Quaternion.Euler(0, -i + 180, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, -i + 270, 0) * Vector3.forward);
             yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    IEnumerator FireStar()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            anim.Play("Attack04");
+            for (int j = 0; j < 360; j += 36)
+            {
+                CreateBullet(Quaternion.Euler(0, j, 0) * Vector3.forward);
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -119,27 +138,37 @@ public class Boss : MonoBehaviour
         {
             switch (TimeManager.Minute)
             {
-                // case 1:
-                //     SpawnBomb();
-                //     break;
-                // case 5:
-                //     SpawnBomb();
-                //     break;
-                // case 9:
-                //     SpawnBomb();
-                //     break;
-                // case 13:
-                //     SpawnBomb();
-                //     break;
-                // case 17:
-                //     SpawnBomb();
-                //     break;
-                // case 21:
-                //     SpawnBomb();
-                //     break;
-                // case 25:
-                //     SpawnBoss();
-                //     break;
+                case 41:
+                    StartCoroutine(Appearance());
+                    break;
+                case 45:
+                    StartCoroutine(FireCircle());
+                    break;
+                case 56:
+                    StartCoroutine(FireSpiral());
+                    break;
+                case 59:
+                    StartCoroutine(FireFlower());
+                    break;
+            }
+        }
+
+        if (TimeManager.Hour == 1)
+        {
+            switch (TimeManager.Minute)
+            {
+                case 5:
+                    StartCoroutine(FireFlower());
+                    break;
+                case 10:
+                    StartCoroutine(FireCircle());
+                    break;
+                case 15:
+                    StartCoroutine(FireStar());
+                    break;
+                case 30:
+                    StartCoroutine(FireStar());
+                    break;
             }
         }
     }
@@ -148,6 +177,7 @@ public class Boss : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
+            anim.Play("GetHit");
             life -= 1;
             lifeManager.lifeCount -= 1;
 

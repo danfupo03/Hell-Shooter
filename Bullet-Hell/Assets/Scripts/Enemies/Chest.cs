@@ -69,6 +69,8 @@ public class Chest : MonoBehaviour
             CreateBullet(Quaternion.Euler(0, angleBetweenBullets, 0) * baseDirection);
             CreateBullet(Quaternion.Euler(0, -2 * angleBetweenBullets, 0) * baseDirection);
             CreateBullet(Quaternion.Euler(0, 2 * angleBetweenBullets, 0) * baseDirection);
+            CreateBullet(Quaternion.Euler(0, -3 * angleBetweenBullets, 0) * baseDirection);
+            CreateBullet(Quaternion.Euler(0, 3 * angleBetweenBullets, 0) * baseDirection);
 
             yield return new WaitForSeconds(0.7f);
         }
@@ -105,6 +107,9 @@ public class Chest : MonoBehaviour
                     StartCoroutine(FireCircle());
                     break;
                 case 35:
+                    StartCoroutine(FireCones(5));
+                    break;
+                case 36:
                     StartCoroutine(FireCones(5));
                     break;
             }

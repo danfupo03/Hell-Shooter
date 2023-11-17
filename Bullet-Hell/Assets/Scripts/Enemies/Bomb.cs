@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField]
-    private float bulletSpeed;
+    [SerializeField] private float bulletSpeed;
 
     public EnemyManager enemyCounter;
 
@@ -59,6 +57,24 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void FireOval()
+    {
+        float radiusX = 5.0f;
+        float radiusY = 3.0f;
+
+        for (int angle = 0; angle < 360; angle += 10)
+        {
+            float radians = Mathf.Deg2Rad * angle;
+            float x = radiusX * Mathf.Cos(radians);
+            float y = radiusY * Mathf.Sin(radians);
+
+            Vector3 position = new Vector3(x, 0, y);
+            CreateBullet(position);
+        }
+
+        Destroy(gameObject);
+    }
+
     void CreateBullet(Vector3 direction)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
@@ -88,36 +104,42 @@ public class Bomb : MonoBehaviour
                     break;
                 case 4:
                     FireCircle();
+                    FireOval();
                     break;
                 case 6:
                     StartCoroutine(Appearance());
                     break;
                 case 8:
                     FireCircle();
+                    FireOval();
                     break;
                 case 10:
                     StartCoroutine(Appearance());
                     break;
                 case 12:
                     FireCircle();
+                    FireOval();
                     break;
                 case 14:
                     StartCoroutine(Appearance());
                     break;
                 case 16:
                     FireCircle();
+                    FireOval();
                     break;
                 case 18:
                     StartCoroutine(Appearance());
                     break;
                 case 20:
                     FireCircle();
+                    FireOval();
                     break;
                 case 22:
                     StartCoroutine(Appearance());
                     break;
                 case 24:
                     FireCircle();
+                    FireOval();
                     break;
             }
         }
