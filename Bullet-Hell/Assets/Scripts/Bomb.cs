@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ram : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletPrefab;
@@ -17,9 +17,12 @@ public class Ram : MonoBehaviour
         enemyCounter = FindObjectOfType<EnemyManager>();
     }
 
-    public IEnumerator Pos1()
+    public IEnumerator Appearance()
     {
-        Vector3 targetPos = new Vector3(-1013, 0, 12);
+
+        float randomX = Random.Range(-4f, 16f);
+        float randomZ = Random.Range(-19f, -1f);
+        Vector3 targetPos = new Vector3(randomX, 0, randomZ);
 
         Vector3 currentPos = transform.position;
 
@@ -64,13 +67,29 @@ public class Ram : MonoBehaviour
 
     private void TimeCheck()
     {
-        if (TimeManager.Hour == 0 && TimeManager.Minute == 2)
+        if (TimeManager.Hour == 0)
         {
-            StartCoroutine(Pos1());
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 4)
-        {
-            FireCircle();
+            switch (TimeManager.Minute)
+            {
+                case 2:
+                    FireCircle();
+                    break;
+                case 4:
+                    FireCircle();
+                    break;
+                case 6:
+                    FireCircle();
+                    break;
+                case 8:
+                    FireCircle();
+                    break;
+                case 10:
+                    FireCircle();
+                    break;
+                case 12:
+                    FireCircle();
+                    break;
+            }
         }
     }
 

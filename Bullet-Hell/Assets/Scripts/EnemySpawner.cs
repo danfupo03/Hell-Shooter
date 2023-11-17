@@ -10,9 +10,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] enemyPrefab;
 
-    [SerializeField]
-    private bool canSpawn = true;
-
     public EnemyManager enemyCounter;
 
     void Awake()
@@ -36,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
         enemyCounter.enemyCount++;
     }
 
-    private void SpawnRam()
+    private void SpawnBomb()
     {
         Vector3 rotation = new Vector3(0, 180, 0);
         Quaternion rotationQuaternion = Quaternion.Euler(rotation);
@@ -59,17 +56,32 @@ public class EnemySpawner : MonoBehaviour
 
     private void TimeCheck()
     {
-        if (TimeManager.Hour == 0 && TimeManager.Minute == 1)
+        if (TimeManager.Hour == 0)
         {
-            SpawnRam();
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 10)
-        {
-            SpawnRam();
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 30)
-        {
-            SpawnBoss();
+            switch (TimeManager.Minute)
+            {
+                case 1:
+                    SpawnBomb();
+                    break;
+                case 3:
+                    SpawnBomb();
+                    break;
+                case 5:
+                    SpawnBomb();
+                    break;
+                case 7:
+                    SpawnBomb();
+                    break;
+                case 9:
+                    SpawnBomb();
+                    break;
+                case 11:
+                    SpawnBomb();
+                    break;
+                case 30:
+                    SpawnBoss();
+                    break;
+            }
         }
     }
 }
