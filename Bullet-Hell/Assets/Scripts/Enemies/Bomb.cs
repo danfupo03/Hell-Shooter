@@ -12,13 +12,23 @@ public class Bomb : MonoBehaviour
 
     public EnemyManager enemyCounter;
 
+    Animator anim;
+
     void Awake()
     {
         enemyCounter = FindObjectOfType<EnemyManager>();
     }
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public IEnumerator Appearance()
     {
+        anim.Play("Run");
+
+        transform.position = new Vector3(6, -5, -12);
 
         float randomX = Random.Range(-4f, 16f);
         float randomZ = Random.Range(-19f, -1f);
@@ -72,21 +82,39 @@ public class Bomb : MonoBehaviour
             switch (TimeManager.Minute)
             {
                 case 2:
-                    FireCircle();
+                    StartCoroutine(Appearance());
                     break;
                 case 4:
                     FireCircle();
                     break;
                 case 6:
-                    FireCircle();
+                    StartCoroutine(Appearance());
                     break;
                 case 8:
                     FireCircle();
                     break;
                 case 10:
-                    FireCircle();
+                    StartCoroutine(Appearance());
                     break;
                 case 12:
+                    FireCircle();
+                    break;
+                case 14:
+                    StartCoroutine(Appearance());
+                    break;
+                case 16:
+                    FireCircle();
+                    break;
+                case 18:
+                    StartCoroutine(Appearance());
+                    break;
+                case 20:
+                    FireCircle();
+                    break;
+                case 22:
+                    StartCoroutine(Appearance());
+                    break;
+                case 24:
                     FireCircle();
                     break;
             }

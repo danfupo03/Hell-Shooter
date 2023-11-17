@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
 
     private float life = 10;
 
+    private Animator anim;
+
     void Awake()
     {
         lifeManager = FindObjectOfType<BossLifeManager>();
@@ -35,6 +37,8 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Appearance()
     {
+        anim.Play("WalkForward");
+
         Vector3 targetPos = new Vector3(6, 0, -7);
 
         Vector3 currentPos = transform.position;
@@ -111,21 +115,32 @@ public class Boss : MonoBehaviour
 
     private void TimeCheck()
     {
-        if (TimeManager.Hour == 0 && TimeManager.Minute == 2)
+        if (TimeManager.Hour == 0)
         {
-            StartCoroutine(Appearance());
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 9)
-        {
-            StartCoroutine(FireCircle());
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 40)
-        {
-            StartCoroutine(FireSpiral());
-        }
-        else if (TimeManager.Hour == 0 && TimeManager.Minute == 30)
-        {
-            StartCoroutine(FireFlower());
+            switch (TimeManager.Minute)
+            {
+                // case 1:
+                //     SpawnBomb();
+                //     break;
+                // case 5:
+                //     SpawnBomb();
+                //     break;
+                // case 9:
+                //     SpawnBomb();
+                //     break;
+                // case 13:
+                //     SpawnBomb();
+                //     break;
+                // case 17:
+                //     SpawnBomb();
+                //     break;
+                // case 21:
+                //     SpawnBomb();
+                //     break;
+                // case 25:
+                //     SpawnBoss();
+                //     break;
+            }
         }
     }
 

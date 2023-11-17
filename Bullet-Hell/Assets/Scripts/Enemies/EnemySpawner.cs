@@ -44,6 +44,17 @@ public class EnemySpawner : MonoBehaviour
         enemyCounter.enemyCount++;
     }
 
+    private void SpawnChest()
+    {
+        Vector3 rotation = new Vector3(0, 180, 0);
+        Quaternion rotationQuaternion = Quaternion.Euler(rotation);
+
+        GameObject enemy = enemyPrefab[2];
+        Instantiate(enemy, transform.position, rotationQuaternion);
+
+        enemyCounter.enemyCount++;
+    }
+
     public void OnEnable()
     {
         TimeManager.OnMinuteChanged += TimeCheck;
@@ -63,23 +74,23 @@ public class EnemySpawner : MonoBehaviour
                 case 1:
                     SpawnBomb();
                     break;
-                case 3:
-                    SpawnBomb();
-                    break;
                 case 5:
-                    SpawnBomb();
-                    break;
-                case 7:
                     SpawnBomb();
                     break;
                 case 9:
                     SpawnBomb();
                     break;
-                case 11:
+                case 13:
                     SpawnBomb();
                     break;
-                case 30:
-                    SpawnBoss();
+                case 17:
+                    SpawnBomb();
+                    break;
+                case 21:
+                    SpawnBomb();
+                    break;
+                case 25:
+                    SpawnChest();
                     break;
             }
         }
