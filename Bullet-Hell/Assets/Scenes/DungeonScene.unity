@@ -81557,6 +81557,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9001295372195739978, guid: 8d2b705d975ea49c5ad80c321386959a, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 3744133877081091469, guid: 8dd598eea0d6f43e1b268d1d5f2e2828, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93147,6 +93151,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9001295372195739978, guid: 8d2b705d975ea49c5ad80c321386959a, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 3744133877081091469, guid: 8dd598eea0d6f43e1b268d1d5f2e2828, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

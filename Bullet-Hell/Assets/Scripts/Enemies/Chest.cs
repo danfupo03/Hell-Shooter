@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed;
 
-    [SerializeField]
-    private float bulletSpeed;
-
+    public GameObject particles;
+    public GameObject instantiatedParticles;
     public EnemyManager enemyCounter;
 
     private float life = 5;
@@ -24,19 +23,21 @@ public class Chest : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        enemyCounter.enemyCount++;
     }
 
     void Update()
     {
         if (life <= 0)
         {
-            Destroy(gameObject);
+            DestroyEnemy();
         }
     }
 
     private void WakeUp()
     {
         anim.Play("IdleBattle");
+        instantiatedParticles = Instantiate(particles, transform.position, transform.rotation);
     }
 
     private IEnumerator FireCircle()
@@ -127,8 +128,14 @@ public class Chest : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    void DestroyEnemy()
     {
         enemyCounter.enemyCount--;
+        Destroy(gameObject);
+
+        if (instantiatedParticles != null)
+        {
+            Destroy(instantiatedParticles);
+        }
     }
 }
