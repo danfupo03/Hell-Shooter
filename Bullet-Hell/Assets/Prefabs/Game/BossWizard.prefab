@@ -2548,6 +2548,7 @@ MonoBehaviour:
   bulletSpeed: 8
   lifeManager: {fileID: 0}
   enemyCounter: {fileID: 0}
+  particles: {fileID: 7957833072274404953, guid: 3355f6bfa6db8b24281b827de929694c, type: 3}
 --- !u!1 &9135697090352507644
 GameObject:
   m_ObjectHideFlags: 0

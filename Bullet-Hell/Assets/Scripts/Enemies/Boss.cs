@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour
     {
         if (life <= 0)
         {
-            Destroy(gameObject);
+            DestroyEnemy();
         }
     }
 
@@ -185,8 +185,9 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    void DestroyEnemy()
     {
         enemyCounter.enemyCount--;
+        Destroy(gameObject);
     }
 }
