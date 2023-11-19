@@ -485,7 +485,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1275949625865439275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8325354191854700286}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DungeonScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3193255390153328887
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +510,7 @@ GameObject:
   - component: {fileID: 7240603213787681098}
   - component: {fileID: 7958837202143753830}
   - component: {fileID: 4099073497847731319}
+  - component: {fileID: 8325354191854700286}
   m_Layer: 5
   m_Name: Menu UI
   m_TagString: Untagged
@@ -591,6 +604,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8325354191854700286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193255390153328887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110904ba57d68406aaba313d041207d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7007529130587931558
 GameObject:
   m_ObjectHideFlags: 0
