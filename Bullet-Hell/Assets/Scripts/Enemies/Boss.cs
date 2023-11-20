@@ -147,9 +147,6 @@ public class Boss : MonoBehaviour
                 case 56:
                     StartCoroutine(FireSpiral());
                     break;
-                case 59:
-                    StartCoroutine(FireFlower());
-                    break;
             }
         }
 

@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Minute = 0;
+        Minute = 39;
         Hour = 0;
         timer = minuteToRealTime;
     }
