@@ -2,12 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
     public void Setup()
     {
         gameObject.SetActive(true);
-        Debug.Log("Game Over!");
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("DungeonScene");
+    }
+
+    public void ExitButton()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }

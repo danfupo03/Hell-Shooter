@@ -8,8 +8,6 @@ public class Boss : MonoBehaviour
 
     [SerializeField] private float bulletSpeed;
 
-    public GameOver gameOver;
-
     public BossLifeManager lifeManager;
 
     public EnemyManager enemyCounter;
