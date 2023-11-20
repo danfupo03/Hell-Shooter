@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform gunOffset;
 
+    public GameOver gameOver;
+
     public float minX;
     public float maxX;
 
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour
         if (life <= 0)
         {
             Destroy(gameObject);
+            gameOver.Setup();
         }
     }
 
