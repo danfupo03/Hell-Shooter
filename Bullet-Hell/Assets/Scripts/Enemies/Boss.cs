@@ -71,13 +71,17 @@ public class Boss : MonoBehaviour
     IEnumerator FireSpiral()
     {
         anim.Play("Attack03Start");
-        for (int i = 0; i < 720; i += 10)
+        for (int i = 0; i < 765; i += 10)
         {
             anim.Play("Attack03Maintain");
             CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 45, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 135, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 225, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 270, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 315, 0) * Vector3.forward);
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -85,25 +89,33 @@ public class Boss : MonoBehaviour
     IEnumerator FireFlower()
     {
         anim.Play("Attack02Start");
-        for (int i = 0; i < 720; i += 10)
+        for (int i = 0; i < 810; i += 10)
         {
             anim.Play("Attack02Maintain");
             CreateBullet(Quaternion.Euler(0, i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 45, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 135, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 225, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, i + 270, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, i + 315, 0) * Vector3.forward);
 
             CreateBullet(Quaternion.Euler(0, -i, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 45, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, -i + 90, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 135, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, -i + 180, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 225, 0) * Vector3.forward);
             CreateBullet(Quaternion.Euler(0, -i + 270, 0) * Vector3.forward);
+            CreateBullet(Quaternion.Euler(0, -i + 315, 0) * Vector3.forward);
             yield return new WaitForSeconds(0.3f);
         }
     }
 
     IEnumerator FireStar()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 15; i++)
         {
             anim.Play("Attack04");
             for (int j = 0; j < 360; j += 36)
@@ -144,7 +156,7 @@ public class Boss : MonoBehaviour
                 case 45:
                     StartCoroutine(FireCircle());
                     break;
-                case 56:
+                case 55:
                     StartCoroutine(FireSpiral());
                     break;
             }
@@ -157,13 +169,15 @@ public class Boss : MonoBehaviour
                 case 5:
                     StartCoroutine(FireFlower());
                     break;
-                case 10:
-                    StartCoroutine(FireCircle());
-                    break;
                 case 15:
                     StartCoroutine(FireStar());
                     break;
-                case 30:
+                case 28:
+                    StartCoroutine(FireCircle());
+                    StartCoroutine(FireSpiral());
+                    break;
+                case 38:
+                    StartCoroutine(FireFlower());
                     StartCoroutine(FireStar());
                     break;
             }
